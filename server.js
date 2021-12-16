@@ -5,11 +5,11 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-   res.sendFile(createPath('index'));
+   res.render(createPath('index'));
 });
 
 app.get('/library', (req, res) => {
-    res.sendFile(createPath('library'));
+    res.render(createPath('library'));
 });
 
 app.listen(process.env.PORT, (onerror) => {

@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-   res.sendFile('/index');
+   res.sendFile('./index');
 });
 
 app.listen(process.env.PORT, (onerror) => {

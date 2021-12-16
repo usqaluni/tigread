@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
    res.sendFile(createPath('index'));
 });
 
+app.get('/library', (req, res) => {
+    res.sendFile(createPath('library'));
+});
+
 app.listen(process.env.PORT, (onerror) => {
     if(onerror) {
        console.log(onerror);

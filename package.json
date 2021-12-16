@@ -1,0 +1,29 @@
+{
+  "name": "tigread",
+  "version": "1.0.0",
+  "description": "learning",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usqaluni/tigread.git"
+  },
+  "keywords": [
+    "reading"
+  ],
+  "author": "Kirill Serov <serov-k-o@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/usqaluni/tigread/issues"
+  },
+  "homepage": "https://github.com/usqaluni/tigread#readme",
+  "engines": {
+    "node": "16.13.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
    res.render(createPath('index'));
 });
 
+app.post('/', (req, res) => {
+  res.render(`<div>${req.body.text}</div>`)
+});
+
 app.get('/library', (req, res) => {
     res.render(createPath('library'));
 });

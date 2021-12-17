@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  res.render(`<div>${req.body.text}</div>`)
+  res.redirect(createPath('library'));
 });
 
 app.get('/library', (req, res) => {

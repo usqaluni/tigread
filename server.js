@@ -2,6 +2,9 @@ const express = require('express');
 const createPath = require('./helpers/create-path');
 
 const app = express();
+
+const PORT = process.env.PORT || 3000;
+
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
@@ -16,7 +19,7 @@ app.get('/library', (req, res) => {
     res.render(createPath('library'));
 });
 
-app.listen(process.env.PORT, (onerror) => {
+app.listen(PORT, (onerror) => {
     if(onerror) {
        console.log(onerror);
     } else {

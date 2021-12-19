@@ -5,15 +5,30 @@
     <title>tigread</title>
 </head>
 <body>
-Welcome to tigread!
+<h1>Welcome to tigread!</h1>
 
-<form id="textform" method="post" action="/index">
-    <textarea id="textarea"></textarea>
-    <input type="submit" value="Submit">
+<form id="translite-form" method="post" action="/">
+    <%- include('./partials/listOfSrcLang', { data }) %>
+
+    <%- include('./partials/listOfResultLang', { data }) %>
+
+    <div class="form-text">
+        <label>Insert your text
+            <textarea name="srctext"><%= data.text %></textarea>
+        </label>
+    </div>
+
+    <div class="form-button">
+        <input type="submit" value="Transliterate">
+    </div>
 </form>
 
-<span>Result:</span>
-<div id="result">something</div>
+<div class="reader">
+    <label>Transliterated text
+        <textarea name="resulttext"><%= data.transliteratedText %></textarea>
+    </label>
+</div>
+
 
 </body>
 </html>

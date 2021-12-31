@@ -65,8 +65,10 @@ function transliteration(array) {
             let rgxBlockSymbol = new RegExp("[" + blockSymbol + "]");
             passNext = true;
             return value.replace(rgxBlockSymbol, '');
-        } else if(!isLetter(value)){
+        } else if(!isLetter(value)) {
             return value;
+        } else if(/[iI]/.test(array[index - 1]) && /[jJ]/.test(value)) {
+            return "";
         } else if(isDw(value, index, array)) {
             passAndDeleteNext = true;
             return russianLatToGeorgian.get("dw");

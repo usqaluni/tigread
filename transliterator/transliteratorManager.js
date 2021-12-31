@@ -2,6 +2,7 @@
 
 const manageRussianToYiddish = require('./RussianToYiddish/manager');
 const manageRussianToHebrew = require('./RussianToHebrew/manager');
+const manageRussianToGeorgian = require('./RussianToGeorgian/manager');
 
 
 function transliteratorManager(data) {
@@ -14,6 +15,9 @@ function transliteratorManager(data) {
             break;
         case "yiddish":
             return manageRussianToYiddish(text);
+            break;
+        case "georgian":
+            return manageRussianToGeorgian(text);
             break;
         default:
             return "";

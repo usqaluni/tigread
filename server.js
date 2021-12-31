@@ -1,5 +1,6 @@
 const express = require('express');
 const createPath = require('./helpers/create-path');
+const transliterate = require('./transliterator/transliteratorManager');
 
 const app = express();
 
@@ -12,8 +13,8 @@ const urlencodedParser = express.urlencoded({extended: false});
 app.get('/', (request, response) => {
     let data = {
         text: "",
-        srclang: "russian",
-        resultlang: "hebrew",
+        srclang: "Russian",
+        resultlang: "Hebrew",
         transliteratedText: ""
     };
     response.render(createPath('index'), { data });
@@ -25,9 +26,8 @@ app.post('/', urlencodedParser, (request, response) => {
      srclang: request.body.srclang,
      resultlang: request.body.resultlang
  };
- //let transliteratedText = transliterate(data);
-    data.transliteratedText = data.text + " 333";
-    console.log(data);
+ let transliteratedText = transliterate(data);
+    data.transliteratedText = transliteratedText;
  response.render(createPath('index'), { data });
 });
 

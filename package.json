@@ -4,7 +4,7 @@
   "description": "learning",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "xregexp": "^5.1.0"
+    "express": "^4.17.1"
   }
 }

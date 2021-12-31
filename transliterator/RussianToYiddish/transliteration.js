@@ -1,6 +1,5 @@
 //this transliteration is from Russian to Yiddish
 
-const {replace} = require("xregexp");
 const blockSymbol = "׆";
 
 

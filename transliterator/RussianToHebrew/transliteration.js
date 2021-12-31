@@ -1,4 +1,3 @@
-const {replace} = require("xregexp");
 const blockSymbol = "׆";
 
 const heb = {

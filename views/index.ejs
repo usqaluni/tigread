@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
     <title>tigread</title>
 </head>
 <body>
-<h1>Welcome!</h1>
+<h1 class="pink">Welcome!</h1>
+
+<div class="input-field col s12">
+    <select>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+</div>
 
 <form id="translite-form" method="post" action="/">
     <%- include('./partials/listOfSrcLang', { data }) %>

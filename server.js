@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-const urlencodedParser = express.urlencoded({limit: '50mb', extended: false});
+const urlencodedParser = express.urlencoded({limit: '50mb', extended: false}); //50mb for big text
 
 app.get('/', (request, response) => {
     let data = {

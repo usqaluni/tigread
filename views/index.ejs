@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>tigread</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tigRead</title>
 </head>
 <body>
 <h1>Welcome!</h1>
 
 <form id="translite-form" method="post" action="/">
-    <%- include('./partials/listOfSrcLang', { data }) %>
-
-    <%- include('./partials/listOfResultLang', { data }) %>
+    <% let srclang = data.srclang %>
+    <%- include('./partials/listOfSrcLang', { srclang }) %>
+    <% let resultlang = data.resultlang %>
+    <%- include('./partials/listOfResultLang', { resultlang }) %>
 
     <div class="form-text">
         <label>Insert your text

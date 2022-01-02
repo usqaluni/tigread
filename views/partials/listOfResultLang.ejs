@@ -7,7 +7,7 @@
 <label for="resultlang">Learning script</label>
 <select id="resultlang" name="resultlang">
     <% for (var i = 0; i < languagesTo.length; i++) { %>
-        <% if(languagesTo[i][0] === data.resultlang) { %>
+        <% if(languagesTo[i][0] === resultlang) { %>
             <option value="<%= languagesTo[i][0] %>" selected><%= languagesTo[i][1]%></option>
         <% } else { %>
             <option value="<%= languagesTo[i][0] %>"><%= languagesTo[i][1] %></option>

@@ -12,11 +12,14 @@ const urlencodedParser = express.urlencoded({extended: false});
 
 app.get('/', (request, response) => {
     let data = {
-        text: "",
-        srclang: "Russian",
-        resultlang: "Hebrew",
-        transliteratedText: ""
-    };
+            text: "",
+            srclang: "Russian",
+            resultlang: "Hebrew",
+            transliteratedText: ""
+        };
+
+    //let jsonData = JSON.stringify(data);
+
     response.render(createPath('index'), { data });
 });
 
@@ -28,7 +31,9 @@ app.post('/', urlencodedParser, (request, response) => {
  };
  let transliteratedText = transliterate(data);
     data.transliteratedText = transliteratedText;
- response.render(createPath('index'), { data });
+    //let jsonData = JSON.stringify(data);
+    //response.render(createPath('index'), { data });
+ response.render(createPath('reader'), { data });
 });
 
 app.listen(PORT, (onerror) => {

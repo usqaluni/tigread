@@ -1,12 +1,12 @@
 <% const languagesTo = [
-    ["hebrew", "Hebrew"],
-    ["yiddish", "Yiddish"],
-    ["georgian", "Georgian"],
+    ["Hebrew", "Hebrew"],
+    ["Yiddish", "Yiddish"],
+    ["Georgian", "Georgian"],
 ]; %>
 
-<label for="resultlang">Learning script</label>
 <select id="resultlang" name="resultlang">
-    <% for (var i = 0; i < languagesTo.length; i++) { %>
+    <option value="" disabled selected>Choose learning language</option>
+<% for (var i = 0; i < languagesTo.length; i++) { %>
         <% if(languagesTo[i][0] === data.resultlang) { %>
             <option value="<%= languagesTo[i][0] %>" selected><%= languagesTo[i][1]%></option>
         <% } else { %>
@@ -14,3 +14,4 @@
         <% } %>
     <% } %>
 </select>
+<label for="resultlang">Learning script</label>

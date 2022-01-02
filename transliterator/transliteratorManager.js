@@ -10,13 +10,13 @@ function transliteratorManager(data) {
     let text = data.text;
 
     switch (data.resultlang) {
-        case "hebrew":
+        case "Hebrew":
             return  manageRussianToHebrew(text);
             break;
-        case "yiddish":
+        case "Yiddish":
             return manageRussianToYiddish(text);
             break;
-        case "georgian":
+        case "Georgian":
             return manageRussianToGeorgian(text);
             break;
         default:

@@ -5,7 +5,7 @@
 ]; %>
 
 <select id="resultlang" name="resultlang">
-    <option value="" disabled selected>Choose learning language</option>
+    <option value="" disabled selected>Choose language</option>
 <% for (var i = 0; i < languagesTo.length; i++) { %>
         <% if(languagesTo[i][0] === data.resultlang) { %>
             <option value="<%= languagesTo[i][0] %>" selected><%= languagesTo[i][1]%></option>

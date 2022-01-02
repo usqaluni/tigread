@@ -8,11 +8,11 @@
     <title>tigRead | reader</title>
 </head>
 <body>
-
+<% let data = JSON.parse(jsonData) %>
 <h1>Reader</h1>
 <a  onclick="javascript:history.back(); return false;">Back</a>
 <div class="reader">
-        <div><%= data.transliteratedText %></div>
+    <pre name="resulttext"><%= data.transliteratedText %></pre>
 </div>
 
 </body>

@@ -1,6 +1,7 @@
 const express = require('express');
 const createPath = require('./helpers/create-path');
 const transliterate = require('./transliterator/transliteratorManager');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -8,17 +9,15 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-const urlencodedParser = express.urlencoded({extended: false});
+const urlencodedParser = express.urlencoded({limit: '50mb', extended: false});
 
 app.get('/', (request, response) => {
     let data = {
             text: "",
-            srclang: "Russian",
-            resultlang: "Hebrew",
+            srclang: "",
+            resultlang: "",
             transliteratedText: ""
         };
-
-    //let jsonData = JSON.stringify(data);
 
     response.render(createPath('index'), { data });
 });
@@ -31,9 +30,8 @@ app.post('/', urlencodedParser, (request, response) => {
  };
  let transliteratedText = transliterate(data);
     data.transliteratedText = transliteratedText;
-    //let jsonData = JSON.stringify(data);
-    //response.render(createPath('index'), { data });
- response.render(createPath('reader'), { data });
+    let jsonData = JSON.stringify(data);
+    response.render(createPath('reader'), { jsonData });
 });
 
 app.listen(PORT, (onerror) => {
@@ -42,4 +40,15 @@ app.listen(PORT, (onerror) => {
     } else {
        console.log("listening for server");
     }
+});
+
+app.use((req, res) => {
+    let data = {
+        text: "",
+        srclang: "",
+        resultlang: "",
+        transliteratedText: ""
+    };
+
+    res.render(createPath('index'), { data });
 });

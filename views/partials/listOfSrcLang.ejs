@@ -1,9 +1,9 @@
 <% const languagesFrom = [
-    ["russian", "Russian"],
+    ["Russian", "Russian"],
 ]; %>
 
-<label for="srclang">Source language</label>
 <select id="srclang" name="srclang">
+    <option disabled selected>Choose language</option>
     <% for (var i = 0; i < languagesFrom.length; i++) { %>
         <% if(languagesFrom[i][0] === srclang) { %>
         <option value="<%= languagesFrom[i][0] %>" selected><%= languagesFrom[i][1]%></option>
@@ -12,3 +12,4 @@
         <% } %>
     <% } %>
 </select>
+<label for="srclang">Source language</label>

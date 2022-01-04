@@ -1,7 +1,7 @@
 const express = require('express');
 const createPath = require('./helpers/create-path');
 const transliterate = require('./transliterator/transliteratorManager');
-const bodyParser = require('body-parser');
+const {log} = require("nodemon/lib/utils");
 
 const app = express();
 
@@ -11,6 +11,8 @@ app.set('view engine', 'ejs');
 
 const urlencodedParser = express.urlencoded({limit: '50mb', extended: false}); //50mb for big text
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (request, response) => {
     let data = {
             text: "",
@@ -18,20 +20,20 @@ app.get('/', (request, response) => {
             resultlang: "",
             transliteratedText: ""
         };
-
-    response.render(createPath('index'), { data });
+    let jsonData = JSON.stringify(data);
+    response.render(createPath('index'), { jsonData });
 });
 
 app.post('/', urlencodedParser, (request, response) => {
- let data = {
-     text: request.body.srctext,
-     srclang: request.body.srclang,
-     resultlang: request.body.resultlang
- };
- let transliteratedText = transliterate(data);
+    let data = {
+        text: request.body.srctext,
+        srclang: request.body.srclang,
+        resultlang: request.body.resultlang
+    };
+    let transliteratedText = transliterate(data);
     data.transliteratedText = transliteratedText;
     let jsonData = JSON.stringify(data);
-    response.render(createPath('reader'), { jsonData });
+    response.render(createPath('reader'), {jsonData});
 });
 
 app.listen(PORT, (onerror) => {

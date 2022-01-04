@@ -269,7 +269,7 @@ function transliterate(array) {
         return value;
 
     });
-    return transliterated;
+    return transliterated; //returns array
 }
 
 module.exports = transliterate;

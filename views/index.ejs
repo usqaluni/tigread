@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css"  media="screen,projection"/>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,24 +10,43 @@
     <title>tigRead</title>
 </head>
 <body>
-<h1>Welcome!</h1>
+<% let data = JSON.parse(jsonData) || {text: "", srclang: "", resultlang: "", transliteratedText: ""}; %>
+<nav>
+    <div class="nav-wrapper orange">
+        <a href="/" class="brand-logo right">🐯 tigRead</a>
+    </div>
+</nav>
 
-<form id="translite-form" method="post" action="/">
-    <% let srclang = data.srclang %>
-    <%- include('./partials/listOfSrcLang', { srclang }) %>
-    <% let resultlang = data.resultlang %>
-    <%- include('./partials/listOfResultLang', { resultlang }) %>
-
-    <div class="form-text">
-        <label>Insert your text
-            <textarea name="srctext"><%= data.text %></textarea>
-        </label>
+<form class="input-field" id="translite-form" method="post" action="/">
+    <div class="row">
+        <div class="input-field col s6">
+            <% let srclang = data.srclang %>
+            <%- include('./partials/listOfSrcLang', { srclang }) %>
+        </div>
+        <div class="input-field col s6">
+            <% let resultlang = data.resultlang %>
+            <%- include('./partials/listOfResultLang', { resultlang }) %>
+        </div>
     </div>
 
-    <div class="form-button">
+    <div class="row">
+        <div class="input-field col s12">
+            <textarea id="srctextarea" class="materialize-textarea" name="srctext" style="resize: vertical; max-height: 400px; overflow-y: scroll;"><%= data.text %></textarea>
+            <label for="srctextarea">Insert your text</label>
+        </div>
+    </div>
+
+    <div class="waves-effect waves-light orange btn">
         <input type="submit" value="Transliterate">
     </div>
 </form>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        M.AutoInit();
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js" integrity="sha512-m2PhLxj2N91eYrIGU2cmIu2d0SkaE4A14bCjVb9zykvp6WtsdriFCiXQ/8Hdj0kssUB/Nz0dMBcoLsJkSCto0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 const express = require('express');
 const createPath = require('./helpers/create-path');
 const transliterate = require('./transliterator/transliteratorManager');
-const {log} = require("nodemon/lib/utils");
 
 const app = express();
 

@@ -18,7 +18,7 @@ function paginate(text, symbolsPerPage) {
 let textContainer = document.getElementById("resulttext");
 let text = textContainer.innerText;
 let pages = paginate(text, 1750);
-let currentPage = 0;
+let currentPage = 1;
 
 if(pages.length == 1) {
     document.getElementById("pagination").style.display = "none";
@@ -27,47 +27,43 @@ if(pages.length == 1) {
     let forwardButton = document.getElementById("pageForward");
     let pageNumber = document.getElementById("pageNumber");
 
-    textContainer.innerText = pages[currentPage];
+    textContainer.innerText = pages[currentPage-1];
     pageNumber.value = currentPage;
 
     backButton.onclick = function () {
-        if(currentPage <= 0) {
-            currentPage = 0;
-            textContainer.innerText = pages[currentPage];
+        if(currentPage <= 1) {
+            currentPage = 1;
+            textContainer.innerText = pages[currentPage - 1];
         } else {
             currentPage--;
-            textContainer.innerText = pages[currentPage];
+            textContainer.innerText = pages[currentPage - 1];
         }
         pageNumber.value = currentPage;
     }
 
     forwardButton.onclick = function () {
-        if(currentPage >= pages.length - 1) {
-            currentPage = pages.length - 1;
-            textContainer.innerText = pages[currentPage];
+        if(currentPage >= pages.length) {
+            currentPage = pages.length;
+            textContainer.innerText = pages[currentPage - 1];
         } else {
             currentPage++;
-            textContainer.innerText = pages[currentPage];
+            textContainer.innerText = pages[currentPage - 1];
         }
         pageNumber.value = currentPage;
     }
 
     pageNumber.oninput = function () {
-        if(pageNumber.value === undefined){
-            currentPage = 0;
+        if(pageNumber.value) currentPage = pageNumber.value;
+
+        if(currentPage < 1) {
+            currentPage = 1;
+            pageNumber.value = currentPage;
+        } else if(currentPage > pages.length) {
+            currentPage = pages.length;
+            pageNumber.value = currentPage;
         }
 
-        currentPage = pageNumber.value;
-
-        if(currentPage >= pages.length) {
-            currentPage = pages.length - 1;
-            textContainer.innerText = pages[currentPage];
-        } else if(currentPage <= 0) {
-            currentPage = 0;
-            textContainer.innerText = pages[currentPage];
-        } else {
-            textContainer.innerText = pages[currentPage];
-        }
-        pageNumber.value = currentPage;
+        textContainer.innerText = pages[currentPage - 1];
     }
+
 }

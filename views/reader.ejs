@@ -23,10 +23,15 @@
 <% let data = JSON.parse(jsonData) || {text: "", srclang: "", resultlang: "", transliteratedText: ""}; %>
 <% let transliteratedText = data.transliteratedText; %>
 
-<div class="reader" id="resulttext"><%= transliteratedText %></div>
+<div id="resulttext"><%= transliteratedText %></div>
 
+<div id="pagination" class="row">
+    <div class="col s1"><a id="pageBack"><i class="material-icons orange white-text">chevron_left</i></a></div>
+    <div class="col s1"><input id="pageNumber" name="pageNumber" type="number"><label for="pageNumber"></label></div>
+    <div class="col s1"><a id="pageForward"><i class="material-icons orange white-text">chevron_right</i></a></div>
+</div>
+<script src="/scripts/pagination.js"></script>
 
-<script src="/scripts/main.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         M.AutoInit();

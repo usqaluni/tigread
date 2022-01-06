@@ -67,7 +67,7 @@ function transliteration(array) {
             return value.replace(rgxBlockSymbol, '');
         } else if(!isLetter(value)) {
             return value;
-        } else if((index !== array.length - 1) && /[iI]/.test(array[index]) && /[jJ]/.test(value + 1)) {
+        } else if((index !== array.length - 1) && /[iI]/.test(array[index]) && /[jJ]/.test(array[index + 1])) {
             return "";
         } else if(isDw(value, index, array)) {
             passAndDeleteNext = true;

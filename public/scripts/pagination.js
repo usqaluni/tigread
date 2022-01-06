@@ -15,7 +15,7 @@ function paginate(text, symbolsPerPage) {
     return pages;
 }
 
-let textContainer = document.getElementById("resulttext");
+let textContainer = document.getElementById("resultText");
 let text = textContainer.innerText;
 let pages = paginate(text, 1750);
 let currentPage = 1;

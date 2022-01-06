@@ -16,24 +16,28 @@
 <body>
 <nav>
     <div class="nav-wrapper orange">
-        <a href="/" class="brand-logo right">🐯 tigRead</a>
-        <ul id="nav-mobile" class="middle hide-on-med-and-down">
-            <li><a onclick="javascript:history.back(); return false;"><i class="material-icons">arrow_back</i></a></li>
+        <a onclick="javascript:history.back(); return false;" class="brand-logo right">🐯 tigRead</a>
+        <ul id="nav-mobile">
+            <li><a id="fontSizeSmaller" class="small no-select">a</a></li>
+            <li><span id="fontSize" class="no-select">14</span></li>
+            <li><a id="fontSizeBigger" class="large no-select">A</a></li>
         </ul>
     </div>
 </nav>
 
 <main>
-    <% let data = JSON.parse(jsonData); %>
-    <% let transliteratedText = data.transliteratedText; %>
+    <div class="container readerContainer">
+        <% let data = JSON.parse(jsonData); %>
+        <% let transliteratedText = data.transliteratedText; %>
+        <div <% if(data.direction === "rtl") { %>dir="rtl" <% } %>class="reader" id="resultText"><%= transliteratedText %></div>
 
-    <div <% if(data.direction === "rtl") { %>dir="rtl"<% } %> class="reader" id="resulttext"><%= transliteratedText %></div>
-
-    <div id="pagination" class="row">
-        <div class="col s1"><a id="pageBack"><i class="material-icons orange white-text">chevron_left</i></a></div>
-        <div class="col s2"><input id="pageNumber" name="pageNumber" type="number"><label for="pageNumber"></label>
+        <div id="pagination" class="row pagination">
+            <div class="col m3 s2"><a id="pageBack"><i class="material-icons orange white-text">chevron_left</i></a></div>
+            <div class="col m6 s3"><input id="pageNumber" name="pageNumber" type="number"><label for="pageNumber"></label>
+            </div>
+            <div class="col m3 s2"><a id="pageForward"><i class="material-icons orange white-text">chevron_right</i></a>
+            </div>
         </div>
-        <div class="col s1"><a id="pageForward"><i class="material-icons orange white-text">chevron_right</i></a></div>
     </div>
 </main>
 
@@ -46,6 +50,7 @@
     </div>
 </footer>
 
+<script src="/scripts/fontSize.js"></script>
 <script src="/scripts/pagination.js"></script>
 <script src="/scripts/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"

@@ -8,9 +8,16 @@ main {
   flex: 1 0 auto;
 }
 
+.readerContainer {
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+}
+
 .reader {
+    padding-top: 1vh;
     white-space: pre-wrap;
-    padding: 10px;
+    flex: 1 0 auto;
 }
 
 #srctextarea {

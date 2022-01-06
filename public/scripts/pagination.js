@@ -1,7 +1,7 @@
 function scrollToTop() {
     if (window.pageYOffset > 0) {
         window.scrollBy(0, -5);
-        setTimeout(scrollToTop, 5);
+        setTimeout(scrollToTop, 1);
     }
 }
 

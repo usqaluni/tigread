@@ -1,3 +1,10 @@
+function scrollToTop() {
+    if (window.pageYOffset > 0) {
+        window.scrollBy(0, -5);
+        setTimeout(scrollToTop, 5);
+    }
+}
+
 function paginate(text, symbolsPerPage) {
 
     let array = [...text];
@@ -39,6 +46,7 @@ if(pages.length == 1) {
             textContainer.innerText = pages[currentPage - 1];
         }
         pageNumber.value = currentPage;
+        scrollToTop();
     }
 
     forwardButton.onclick = function () {
@@ -50,6 +58,7 @@ if(pages.length == 1) {
             textContainer.innerText = pages[currentPage - 1];
         }
         pageNumber.value = currentPage;
+        scrollToTop();
     }
 
     pageNumber.oninput = function () {
@@ -65,5 +74,4 @@ if(pages.length == 1) {
 
         textContainer.innerText = pages[currentPage - 1];
     }
-
 }

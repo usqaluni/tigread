@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-const urlencodedParser = express.urlencoded({limit: '50mb', extended: false}); //50mb for big text
+const urlencodedParser = express.urlencoded({limit: '50mb', extended: false}); //limit is for big text
 
 app.use(express.static(__dirname + '/public'));
 
@@ -17,7 +17,8 @@ app.get('/', (request, response) => {
             text: "",
             srclang: "",
             resultlang: "",
-            transliteratedText: ""
+            transliteratedText: "",
+            direction: "",
         };
     let jsonData = JSON.stringify(data);
     response.render(createPath('index'), { jsonData });
@@ -29,10 +30,9 @@ app.post('/', urlencodedParser, (request, response) => {
         srclang: request.body.srclang,
         resultlang: request.body.resultlang
     };
-    let transliteratedText = transliterate(data);
-    data.transliteratedText = transliteratedText;
+    data = transliterate(data);
     let jsonData = JSON.stringify(data);
-    response.render(createPath('reader'), {jsonData});
+    response.render(createPath('reader'), { jsonData });
 });
 
 app.listen(PORT, (onerror) => {
@@ -50,6 +50,6 @@ app.use((req, res) => {
         resultlang: "",
         transliteratedText: ""
     };
-
-    res.render(createPath('index'), { data });
+    let jsonData = JSON.stringify(data);
+    res.render(createPath('index'), { jsonData });
 });

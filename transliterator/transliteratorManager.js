@@ -11,18 +11,23 @@ function transliteratorManager(data) {
 
     switch (data.resultlang) {
         case "Hebrew":
-            return  manageRussianToHebrew(text);
+            data.transliteratedText = manageRussianToHebrew(text);
+            data.direction = "rtl";
             break;
         case "Yiddish":
-            return manageRussianToYiddish(text);
+            data.transliteratedText = manageRussianToYiddish(text);
+            data.direction = "rtl";
             break;
         case "Georgian":
-            return manageRussianToGeorgian(text);
+            data.transliteratedText = manageRussianToGeorgian(text);
+            data.direction = "ltr";
             break;
         default:
             return "";
             break;
     }
+
+    return data;
 }
 
 module.exports = transliteratorManager;

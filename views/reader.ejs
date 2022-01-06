@@ -15,12 +15,14 @@
 
 <body>
 <nav>
-    <div class="nav-wrapper orange">
+    <div id="navbar" class="nav-wrapper orange">
         <a onclick="javascript:history.back(); return false;" class="brand-logo right">🐯 tigRead</a>
         <ul id="nav-mobile">
-            <li><a id="fontSizeSmaller" class="small no-select">a</a></li>
+            <li><a id="fontSizeSmaller" class="no-select">a</a></li>
             <li><span id="fontSize" class="no-select">14</span></li>
-            <li><a id="fontSizeBigger" class="large no-select">A</a></li>
+            <li><a id="fontSizeBigger" class="no-select">A</a></li>
+            <li><i class="material-icons transparent-text no-select">add</i></li>
+            <li><a id="night" class="no-select"><i class="material-icons">brightness_3</i></a></li>
         </ul>
     </div>
 </nav>
@@ -42,7 +44,7 @@
 </main>
 
 <footer class="page-footer transparent">
-    <div class="footer-copyright orange">
+    <div id="footer" class="footer-copyright orange">
         <div class="container">
             © 2022 tigRead
             <a class="grey-text text-lighten-4 right" target="_blank" href="https://heder.ru">Ulpan Heder</a>
@@ -50,6 +52,7 @@
     </div>
 </footer>
 
+<script src="/scripts/nightMode.js"></script>
 <script src="/scripts/fontSize.js"></script>
 <script src="/scripts/pagination.js"></script>
 <script src="/scripts/main.js"></script>

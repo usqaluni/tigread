@@ -27,9 +27,7 @@
     <% let data = JSON.parse(jsonData); %>
     <% let transliteratedText = data.transliteratedText; %>
 
-    <div <% if(data.direction === "rtl") { %>dir="rtl"<% } %> class="reader" id="resulttext">
-        <%= transliteratedText %>
-    </div>
+    <div <% if(data.direction === "rtl") { %>dir="rtl"<% } %> class="reader" id="resulttext"><%= transliteratedText %></div>
 
     <div id="pagination" class="row">
         <div class="col s1"><a id="pageBack"><i class="material-icons orange white-text">chevron_left</i></a></div>
@@ -43,7 +41,7 @@
     <div class="footer-copyright orange">
         <div class="container">
             © 2022 tigRead
-            <a class="grey-text text-lighten-4 right" href="https://heder.ru">Ulpan Heder</a>
+            <a class="grey-text text-lighten-4 right" target="_blank" href="https://heder.ru">Ulpan Heder</a>
         </div>
     </div>
 </footer>

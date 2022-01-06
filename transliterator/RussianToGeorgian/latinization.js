@@ -4,7 +4,7 @@ const blockSymbol = "׆";
 
 const russianToLatin = new Map([ //after consonants
     ["а", "a"], ["А", "A"],     ["б", "b"], ["Б", "B"],     ["в", "v"], ["В", "V"],
-    ["г", "g"], ["Г", "G"],     ["д", "d"], ["Д", "D"],     ["е", "e"], ["Е", "E"], //here is the difference
+    ["г", "g"], ["Г", "G"],     ["д", "d"], ["Д", "D"],     ["е", "e"], ["Е", "E"],
     ["ё", "o"], ["Ё", "o"],     ["ж", "w"], ["Ж", "W"],     ["з", "z"], ["З", "Z"],
     ["и", "i"], ["И", "I"],     ["й", "j"], ["Й", "J"],     ["к", "k"], ["К", "K"],
     ["л", "l"], ["Л", "L"],     ["м", "m"], ["М", "M"],     ["н", "n"], ["Н", "N"],
@@ -13,7 +13,7 @@ const russianToLatin = new Map([ //after consonants
     ["ф", "f"], ["Ф", "F"],     ["х", "h"], ["Х", "H"],     ["ц", "c"], ["Ц", "C"],
     ["ч", "y"], ["Ч", "Y"],     ["ш", "x"], ["Ш", "X"],     ["щ", "q"], ["Щ", "Q"],
     ["ъ", ""], ["Ъ", ""],       ["ы", "i"], ["Ы", "I"],     ["ь", ""], ["Ь", ""],
-    ["э", "e"], ["Э", "E"],     ["ю", "u"], ["Ю", "U"],     ["я", "a"], ["Я", "A"], //here is the difference
+    ["э", "e"], ["Э", "E"],     ["ю", "u"], ["Ю", "U"],     ["я", "a"], ["Я", "A"],
 ]);
 
 
@@ -43,8 +43,6 @@ function isIotatedBig(value){
 function isRussianE(value){
     return /[еЕ]/.test(value);
 }
-
-
 
 function latinize(array) {
     let transliteratedArray = array.map((value, index, array) => {

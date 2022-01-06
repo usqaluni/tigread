@@ -8,13 +8,21 @@ document.addEventListener('DOMContentLoaded', function() {
     text.style.fontSize = `${size}pt`;
 
     fontSizeSmallerButton.onclick = () => {
-        size--;
+        if(size > 8) {
+            size--;
+        } else {
+            size = 8;
+        }
         text.style.fontSize = `${size}pt`;
         fontSize.innerText = size;
     }
 
     fontSizeBiggerButton.onclick = () => {
-        size++;
+        if(size < 50) {
+            size++;
+        } else {
+            size = 40;
+        }
         text.style.fontSize = `${size}pt`;
         fontSize.innerText = size;
     }

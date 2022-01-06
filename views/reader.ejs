@@ -27,7 +27,7 @@
     <% let data = JSON.parse(jsonData); %>
     <% let transliteratedText = data.transliteratedText; %>
 
-    <div <% if(data.direction === "rtl") { %>dir="rtl"<% } %> class="reader" id="resulttext"> //here is addition of right-to-left attribute
+    <div <% if(data.direction === "rtl") { %>dir="rtl"<% } %> class="reader" id="resulttext">
         <%= transliteratedText %>
     </div>
 

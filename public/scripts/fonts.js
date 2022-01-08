@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fontStyle += `
             @font-face {
             font-family: "${fontNames[i].innerHTML}";
-            src: url(../fonts/Hebrew/${fontNames[i].getAttribute('id')});
+            src: url(../fonts/${fontNames[i].getAttribute('id')});
         }\n
         `;
     }

@@ -6,6 +6,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css"
           media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="/styles/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/styles/fonts.css"/>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -14,6 +15,14 @@
 </head>
 
 <body>
+<% let data = JSON.parse(jsonData); %>
+<% let fontList = data.fontList %>
+<ul id="fontList" class="dropdown-content">
+    <li><a class="fontNames" id="Default">Default</a></li>
+    <% for(let i = 0; i < fontList.length; i++) { %>
+    <li><a class="fontNames" id="<%= fontList[i] %>"><%= fontList[i].replace(/\.[^/.]+$/, "") %></a></li>
+    <% } %>
+</ul>
 <nav>
     <div id="navbar" class="nav-wrapper orange">
         <a onclick="javascript:history.back(); return false;" class="brand-logo right">🐯 tigRead</a>
@@ -23,13 +32,13 @@
             <li><a id="fontSizeBigger" class="no-select">A</a></li>
             <li><i class="material-icons transparent-text no-select">add</i></li>
             <li><a id="night" class="no-select"><i class="material-icons">brightness_3</i></a></li>
+            <li><a style="width: 150px;" class="dropdown-trigger" data-target="fontList">Fonts<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
     </div>
 </nav>
 
 <main>
     <div class="container readerContainer">
-        <% let data = JSON.parse(jsonData); %>
         <% let transliteratedText = data.transliteratedText; %>
         <div <% if(data.direction === "rtl") { %>dir="rtl" <% } %>class="reader" id="resultText"><%= transliteratedText %></div>
 
@@ -52,6 +61,7 @@
     </div>
 </footer>
 
+<script src="/scripts/fonts.js"></script>
 <script src="/scripts/nightMode.js"></script>
 <script src="/scripts/fontSize.js"></script>
 <script src="/scripts/pagination.js"></script>

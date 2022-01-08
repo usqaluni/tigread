@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     fontSizeBiggerButton.onclick = () => {
-        if(size < 50) {
+        if(size < 70) {
             size++;
         } else {
-            size = 40;
+            size = 70;
         }
         text.style.fontSize = `${size}pt`;
         fontSize.innerText = size;

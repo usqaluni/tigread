@@ -1,6 +1,8 @@
 const express = require('express');
 const createPath = require('./helpers/create-path');
 const transliterate = require('./transliterator/transliteratorManager');
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
@@ -19,6 +21,7 @@ app.get('/', (request, response) => {
             resultlang: "",
             transliteratedText: "",
             direction: "",
+            fontList: ""
         };
     let jsonData = JSON.stringify(data);
     response.render(createPath('index'), { jsonData });
@@ -28,18 +31,31 @@ app.post('/', urlencodedParser, (request, response) => {
     let data = {
         text: request.body.srctext,
         srclang: request.body.srclang,
-        resultlang: request.body.resultlang
+        resultlang: request.body.resultlang,
+        transliteratedText: "",
+        direction: "",
+        fontList: ["test1", "test3"]
     };
+
+    fs.readdir(path.resolve(__dirname, './public/fonts', request.body.resultlang), (err, files) => {
+        if (err)
+            console.log(err);
+        else {
+            data.fontList = files;
+        }
+    });
     data = transliterate(data);
-    let jsonData = JSON.stringify(data);
-    response.render(createPath('reader'), { jsonData });
+    setTimeout(() => {
+        let jsonData = JSON.stringify(data);
+        response.render(createPath('reader'), {jsonData});
+    }, 500);
 });
 
 app.listen(PORT, (onerror) => {
     if(onerror) {
        console.log(onerror);
     } else {
-       console.log("listening for server");
+       console.log("Listening for server");
     }
 });
 
@@ -48,7 +64,8 @@ app.use((req, res) => {
         text: "",
         srclang: "",
         resultlang: "",
-        transliteratedText: ""
+        transliteratedText: "",
+        fontList: ""
     };
     let jsonData = JSON.stringify(data);
     res.render(createPath('index'), { jsonData });

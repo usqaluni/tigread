@@ -158,18 +158,40 @@ function removeU(value, index, array) {
     return value;
 }
 
-// ge gi -> hi. Place it before vowel transformation, not ot do gui -> hi -> hi
+// ge, gi -> hi. g -> q. Place it before vowel transformation, not ot do gui -> hi -> hi
 function isGg(value) {
     return /[gG]/.test(value);
 }
-function replaceGByH(value, index, array) {
-    if(isEI(array[index + 1]) && value === "g") {
-        return "h";
-    } else if(isEI(array[index + 1]) && value === "G") {
-        return "H";
+function replaceGByH(value) {
+    switch (value) {
+        case "g":
+            return "h";
+            break;
+        case "G":
+            return "H";
+            break;
+        default:
+            return value;
+            break;
     }
-    return value;
 }
+function replaceGByQ(value, index, array) {
+    switch (value) {
+        case "g":
+            return "q";
+            break;
+        case "G":
+            return "Q";
+            break;
+        default:
+            return value;
+            break;
+    }
+}
+function isNn(value) {
+    return /[nN]/.test(value);
+}
+
 
 // ch -> y, y -> j
 function isCh(value, index, array) {
@@ -356,8 +378,14 @@ function latinize(array) {
             return value;
         } else if (isYy(value) && isSingleLetterWord(index, array)) {  // 'and' y -> i
             return replaceY(value);
-        } else if (isGg(value) && !isLastWordLetter(index, array)) { // g -> h
-            return replaceGByH(value, index, array);
+        } else if (isGg(value)) {                 // g -> h, q
+            if (!isLastWordLetter(index, array) && isEI(array[index + 1])) {
+                return replaceGByH(value);
+            } else if (isFistWordLetter(index, array) || isNn(array[index - 1])) {
+                    return value;
+            } else {
+                return replaceGByQ(value);
+            }
         } else if (isMiddleLetter(index, array) && isUu(value)) { // que, qui -> qe, qi
             return removeU(value, index, array);
         } else if (isVowel(value)) {                     // á... -> a...

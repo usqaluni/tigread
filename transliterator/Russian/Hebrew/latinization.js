@@ -62,15 +62,14 @@ function isRussianE(value){
 }
 
 
-
 function latinize(array) {
     let transliteratedArray = array.map((value, index, array) => {
         if (value.startsWith(blockSymbol) || !isCyrillic(value)) return value; //noncyrillic and blocked symbols are returning as they are
-        if((isFistWordLetter(index, array) || isNonconsonant(array[index - 1])) && isIotatedBig(value)) { //looking for first iotated letters or letters after 'vowels'
+        if ((isFistWordLetter(index, array) || isNonconsonant(array[index - 1])) && isIotatedBig(value)) { //looking for first iotated letters or letters after 'vowels'
             return "J" + russianToLatin.get(value.toLowerCase()); //it becomes second letter so it`s lowercased. there is a problem with whole uppercased words
-        } else if((isFistWordLetter(index, array) || isNonconsonant(array[index - 1])) && isIotatedSmall(value)) {
+        } else if ((isFistWordLetter(index, array) || isNonconsonant(array[index - 1])) && isIotatedSmall(value)) {
             return "j" + russianToLatin.get(value);
-        } else if(isIotatedSmall(value) && !isPalatal(array[index - 1]) && !isRussianE(value)) { //not iotating between consonant and russian E and after palatal
+        } else if (isIotatedSmall(value) && !isPalatal(array[index - 1]) && !isRussianE(value)) { //not iotating between consonant and russian E and after palatal
             return "j" + russianToLatin.get(value);
         } else return russianToLatin.get(value);
     });

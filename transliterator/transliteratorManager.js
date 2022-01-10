@@ -1,9 +1,9 @@
 //manager chooses the path of text processing
 
-const manageRussianToYiddish = require('./RussianToYiddish/manager');
-const manageRussianToHebrew = require('./RussianToHebrew/manager');
-const manageRussianToGeorgian = require('./RussianToGeorgian/manager');
-const manageSpanishToGeorgian = require('./SpanishToGeorgian/manager');
+const manageRussianToYiddish = require('./Russian/Yiddish/manager');
+const manageRussianToHebrew = require('./Russian/Hebrew/manager');
+const manageRussianToGeorgian = require('./Russian/Georgian/manager');
+const manageSpanishToGeorgian = require('./Spanish/Georgian/manager');
 
 
 function transliteratorManager(data) {

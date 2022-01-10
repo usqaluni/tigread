@@ -1,4 +1,4 @@
-//this transliteration is from Russian to Georgian
+//this transliteration is from Spanish to Georgian
 
 const blockSymbol = "׆";  //no block symbol in this module
 
@@ -18,10 +18,10 @@ const russianLatToGeorgian = new Map([
     ["dw", "ჯ"],    ["dz", "ძ"], //no such combinations
 ]);
 
-const russianLatToGeorgianSecond = new Map([
+const russianLatToGeorgianSecond = new Map([ // i`d like to use it, but it sounds strange ["z", "ჟ"],
     ["a", "ა"],     ["b", "ბ"],    ["v", "ვ"],
     ["g", "გ"],     ["d", "დ"],    ["e", "ე"],
-    ["z", "ჟ"],
+    ["z", "ზ"],
     ["i", "ი"],     ["j", "ი"],    ["k", "ყ"],
     ["l", "ლ"],     ["m", "მ"],    ["n", "ნ"],
     ["o", "ო"],     ["p", "პ"],    ["r", "რ"],

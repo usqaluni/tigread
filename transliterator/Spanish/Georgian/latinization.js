@@ -317,7 +317,7 @@ function isZz(value) {
     return /[zZ]/.test(value);
 }
 function isVoicedConsonant(value) {
-    return /[bBdDgGmMnNñÑrRvVwW]/.test(value);
+    return /[bBdDgGlLmMnNñÑrRvVwW]/.test(value);
 }
 
 // first or after m, n (b,v) -> b; other -> v
@@ -366,6 +366,24 @@ function replaceBVByV(value) {
     }
 }
 
+// s before voiced consonant -> z
+function isSs(value) {
+    return /[sS]/.test(value);
+}
+function replaceSByZ(value) {
+    switch (value) {
+        case "s":
+            return "z";
+            break;
+        case "S":
+            return "Z";
+            break;
+        default:
+            return value;
+            break;
+    }
+}
+
 function latinize(array) {
 
     let passNext = false;
@@ -382,7 +400,7 @@ function latinize(array) {
             if (!isLastWordLetter(index, array) && isEI(array[index + 1])) {
                 return replaceGByH(value);
             } else if (isFistWordLetter(index, array) || isNn(array[index - 1])) {
-                    return value;
+                return value;
             } else {
                 return replaceGByQ(value);
             }
@@ -390,20 +408,26 @@ function latinize(array) {
             return removeU(value, index, array);
         } else if (isVowel(value)) {                     // á... -> a...
             return replaceStressedVowels(value);
-        } else if (isYy(value)) {       // y -> j
+        } else if (isYy(value)) {                        // y -> j
             return replaceYByJ(value);
         } else if (!isLastWordLetter(index, array) && isCh(value, index, array)) { // ch -> y
             passNext = true;
             return replaceChByY(value);
-        } else if (idCc(value)) {                       // c -> s, k
-            if(!isLastWordLetter(index, array) && isEI(array[index + 1])) {
+        } else if (idCc(value)) {                                // c -> s, k
+            if (!isLastWordLetter(index, array) && isEI(array[index + 1])) {
                 return replaceCByS(value);
             } else {
                 return replaceCByK(value);
             }
-        } else if (isSh(value, index, array)) {
+        } else if (!isLastWordLetter(index, array) && isSh(value, index, array)) {   // sh -> x
             passNext = true;
             return replaceShByX(value);
+        } else if (!isLastWordLetter(index, array) && isSs(value)) {      // s(n...) -> z(n...)
+            if (isVoicedConsonant(array[index + 1])) {
+                return replaceSByZ(value);
+            } else {
+                return value;
+            }
         } else if (!isLastWordLetter(index, array) && isLl(value, index, array)) { // ll -> j
             passNext = true;
             return replaceLByJ(value);
@@ -412,8 +436,8 @@ function latinize(array) {
             return replaceTsByC(value);
         } else if (isZz(value) && !isLastWordLetter(index, array) && isVoicedConsonant(array[index + 1])) { // z -> z (more regular z -> s is in replaceConsonants)
             return value;
-        } else if(isBV(value)){                                               // b,v -> initial and after m,n 'b', else 'v'
-            if(isFistWordLetter(index, array) || isMN(array[index - 1])) {
+        } else if (isBV(value)) {                                               // b,v -> initial and after m,n 'b', else 'v'
+            if (isFistWordLetter(index, array) || isMN(array[index - 1])) {
                 return replaceBVByB(value);
             } else {
                 return replaceBVByV(value);
@@ -421,19 +445,6 @@ function latinize(array) {
         } else {
             return replaceConsonants(value);
         }
-
-        /*if (value.startsWith(blockSymbol) || !isCyrillic(value)) return value; //noncyrillic and blocked symbols are returning as they are
-
-        if((isFistWordLetter(index, array) || isNonconsonant(array[index - 1])) && isIotatedBig(value)) { //looking for first iotated letters or letters after 'vowels'
-            return "J" + spanishToLatin.get(value.toLowerCase()); //it becomes second letter so it`s lowercased. there is a problem with whole uppercased words
-        } else if((isFistWordLetter(index, array) || isNonconsonant(array[index - 1])) && isIotatedSmall(value)) {
-            return "j" + spanishToLatin.get(value);
-        } else if(isIotatedSmall(value) && !isPalatal(array[index - 1]) && !isRussianE(value)) { //not iotating between consonant and russian E and after palatal
-            return "j" + spanishToLatin.get(value);
-        } else if(isIotatedBig(value) && !isPalatal(array[index - 1]) && !isRussianE(value)) {
-            return "J" + spanishToLatin.get(value);
-        } else return spanishToLatin.get(value);
-         */
 
     });
 

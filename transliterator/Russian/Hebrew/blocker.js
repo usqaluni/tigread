@@ -11,9 +11,9 @@ const latinLetters = [
 
 const blockSymbol = "׆";
 
-function blockLatin(array){
+function blockLatin(array) {
     let blocked = array.map(value => {
-        if(latinLetters.includes(value)){
+        if (latinLetters.includes(value)) {
             return blockSymbol + value;
         } else return value;
     })

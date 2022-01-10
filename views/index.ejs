@@ -24,16 +24,24 @@
 </header>
 
 <main>
-    <% let data = JSON.parse(jsonData); %>
     <form class="input-field" id="translite-form" method="post" action="/">
         <div class="row">
             <div class="input-field col s6">
-                <% let srclang = data.srclang %>
-                <%- include('./partials/listOfSrcLang', { srclang }) %>
+                <select id="srclang" name="srclang">
+                    <option value="" disabled selected>Choose language</option>
+                    <option value="Russian">Russian</option>
+                    <option value="Spanish">Spanish</option>
+                </select>
+                <label for="srclang">Source language</label>
             </div>
             <div class="input-field col s6">
-                <% let resultlang = data.resultlang %>
-                <%- include('./partials/listOfResultLang', { resultlang }) %>
+                <select id="resultlang" name="resultlang">
+                    <option value="" disabled selected>Choose language</option>
+                    <option value="Georgian">Georgian</option>
+                    <option value="Hebrew">Hebrew</option>
+                    <option value="Yiddish">Yiddish</option>
+                </select>
+                <label for="resultlang">To script of...</label>
             </div>
         </div>
 
@@ -43,7 +51,7 @@
 
         <div class="row">
             <div class="input-field col s12">
-                <textarea required id="srctextarea" class="materialize-textarea" name="srctext"><%= data.text %></textarea>
+                <textarea required id="srctext" class="materialize-textarea" name="srctext"></textarea>
                 <label for="srctext">Insert your text</label>
             </div>
         </div>

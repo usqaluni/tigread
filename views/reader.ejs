@@ -20,7 +20,7 @@
 <ul id="fontList" class="dropdown-content">
     <li><a class="fontNames" id="Default">Default</a></li>
     <% for(let i = 0; i < fontList.length; i++) { %>
-    <li><a class="fontNames" id="<%= data.resultlang + "/" + fontList[i] %>"><%= fontList[i].replace(/\.[^/.]+$/, "") %></a></li>
+        <li><a class="fontNames" id="<%= data.resultlang + "/" + fontList[i] %>"><%= fontList[i].replace(/\.[^/.]+$/, "") %></a></li>
     <% } %>
 </ul>
 <nav>

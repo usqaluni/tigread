@@ -1,6 +1,6 @@
 const express = require('express');
 const createPath = require('./helpers/create-path');
-const transliterate = require('./transliterator/transliteratorManager');
+const transliterate = require('./transliteratorManager');
 const fs = require("fs");
 const path = require("path");
 
@@ -15,16 +15,7 @@ const urlencodedParser = express.urlencoded({limit: '50mb', extended: false}); /
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (request, response) => {
-    let data = {
-            text: "",
-            srclang: "",
-            resultlang: "",
-            transliteratedText: "",
-            direction: "",
-            fontList: ""
-        };
-    let jsonData = JSON.stringify(data);
-    response.render(createPath('index'), { jsonData });
+    response.render(createPath('index'));
 });
 
 app.post('/', urlencodedParser, (request, response) => {
@@ -34,7 +25,7 @@ app.post('/', urlencodedParser, (request, response) => {
         resultlang: request.body.resultlang,
         transliteratedText: "",
         direction: "",
-        fontList: ["test1", "test3"]
+        fontList: [""]
     };
 
     fs.readdir(path.resolve(__dirname, './public/fonts', request.body.resultlang), (err, files) => {
@@ -53,20 +44,12 @@ app.post('/', urlencodedParser, (request, response) => {
 
 app.listen(PORT, (onerror) => {
     if(onerror) {
-       console.log(onerror);
+        console.log(onerror);
     } else {
-       console.log("Listening for server");
+        console.log("Listening for server");
     }
 });
 
 app.use((req, res) => {
-    let data = {
-        text: "",
-        srclang: "",
-        resultlang: "",
-        transliteratedText: "",
-        fontList: ""
-    };
-    let jsonData = JSON.stringify(data);
-    res.render(createPath('index'), { jsonData });
+    res.render(createPath('index'));
 });

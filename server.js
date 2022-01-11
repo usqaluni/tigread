@@ -2,7 +2,7 @@ const express = require('express');
 const createPath = require('./helpers/create-path');
 const transliterate = require('./transliteratorManager');
 const fs = require("fs");
-const path = require("path");
+const {request, response} = require("express");
 
 const app = express();
 
@@ -28,10 +28,10 @@ app.post('/', urlencodedParser, (request, response) => {
         fontList: [""]
     };
 
-    fs.readdir(path.resolve(__dirname, './public/fonts', request.body.resultlang), (err, files) => {
-        if (err)
+    fs.readdir(`./public/fonts/${request.body.resultlang}`, (err, files) => {
+        if (err) {
             console.log(err);
-        else {
+        } else {
             data.fontList = files;
         }
     });

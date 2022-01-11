@@ -22,24 +22,19 @@
 <header>
     <h1>Wow!</h1>
 </header>
-
 <main>
     <form class="input-field" id="translite-form" method="post" action="/">
         <div class="row">
-            <div class="input-field col s6">
-                <select id="srclang" name="srclang">
-                    <option value="" disabled selected>Choose language</option>
-                    <option value="Russian">Russian</option>
-                    <option value="Spanish">Spanish</option>
+            <div class="browser-default col s6">
+                <select required id="srclang" name="srclang">
+                    <!-- from js -->
                 </select>
                 <label for="srclang">Source language</label>
             </div>
-            <div class="input-field col s6">
-                <select id="resultlang" name="resultlang">
-                    <option value="" disabled selected>Choose language</option>
-                    <option value="Georgian">Georgian</option>
-                    <option value="Hebrew">Hebrew</option>
-                    <option value="Yiddish">Yiddish</option>
+            <div class="browser-default col s6">
+                <select required id="resultlang" name="resultlang">
+                    <option value="">Choose language</option>
+                    <!-- from js -->
                 </select>
                 <label for="resultlang">To script of...</label>
             </div>
@@ -67,6 +62,7 @@
     </div>
 </footer>
 
+<script src="/scripts/selectLanguages.js"></script>
 <script src="/scripts/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
         integrity="sha512-m2PhLxj2N91eYrIGU2cmIu2d0SkaE4A14bCjVb9zykvp6WtsdriFCiXQ/8Hdj0kssUB/Nz0dMBcoLsJkSCto0Q=="

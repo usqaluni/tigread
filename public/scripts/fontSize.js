@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let fontSize = document.getElementById('fontSize');
     let text = document.getElementById('resultText');
 
-    let size = 14;
+    let size = 20;
     text.style.fontSize = `${size}pt`;
 
     fontSizeSmallerButton.onclick = () => {

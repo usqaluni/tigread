@@ -15,6 +15,7 @@ main {
 }
 
 .reader {
+    font-size: 20pt;
     padding-top: 1vh;
     white-space: pre-wrap;
     flex: 1 0 auto;

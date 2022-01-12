@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    //todo language data have to come from server
 let languages = {
     Russian: ["Georgian", "Hebrew", "Yiddish"],
     Spanish: ["Georgian"]
@@ -27,7 +28,7 @@ srclang.innerHTML = getOptionsList(languages);
 
 srclang.onchange = () => {
     resultlang.innerHTML = getOptionsList(languages[srclang.value]);
-    //resultlang.removeAttribute('disabled');
+    //resultlang.removeAttribute('disabled'); //disabled select is not required
     M.AutoInit();   //re-initialize select
 }
 

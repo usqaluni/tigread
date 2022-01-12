@@ -19,6 +19,8 @@ main {
     padding-top: 1vh;
     white-space: pre-wrap;
     flex: 1 0 auto;
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 #srctext {

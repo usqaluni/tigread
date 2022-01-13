@@ -13,6 +13,8 @@ main {
   flex-direction: column;
   height: 83vh;
   overflow-y: scroll;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .reader {

@@ -20,7 +20,8 @@ showButton.onclick = () => {
             let selection = window.getSelection();
             let start = selection.anchorOffset;
             let word = separatedOriginal[findWordIndex(separatedText, start + 1)];
-            M.toast({html: word});
+            let rgxPunctuation = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/;
+            M.toast({html: word.replace(rgxPunctuation, "")});
       } else {
             M.toast({html: "Select some word"});
       }

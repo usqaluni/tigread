@@ -18,7 +18,7 @@ const russianLatToGeorgian = new Map([
     ["dw", "ჯ"],    ["dz", "ძ"],
 ]);
 
-const russianLatToGeorgianSecond = new Map([
+const russianLatToGeorgianSecond = new Map([ //ქ
     ["a", "ა"],     ["b", "ბ"],    ["v", "ვ"],
     ["g", "ღ"],     ["d", "დ"],    ["e", "ე"],
     ["w", "ჟ"],     ["z", "ზ"],

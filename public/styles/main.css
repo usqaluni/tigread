@@ -2,21 +2,17 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  user-select: text;
-  -webkit-user-select: text;
 }
 
 main {
   flex: 1 0 auto;
+  overflow-y: scroll;
 }
 
 .readerContainer {
   display: flex;
   flex-direction: column;
   height: 83vh;
-  overflow-y: scroll;
-  user-select: text;
-  -webkit-user-select: text;
 }
 
 .reader {
@@ -24,8 +20,6 @@ main {
     padding-top: 1vh;
     white-space: pre-wrap;
     flex: 1 0 auto;
-    user-select: text;
-    -webkit-user-select: text;
 }
 
 #srctext {

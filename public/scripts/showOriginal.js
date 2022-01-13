@@ -20,7 +20,7 @@ showButton.onclick = () => {
       if(!window.getSelection().isCollapsed){
             let selection = window.getSelection();
             let start = selection.anchorOffset;
-            M.toast({html: separatedOriginal[findWordIndex(separatedText, start)] + " " + start});
+            M.toast({html: separatedOriginal[findWordIndex(separatedText, start)]});
       } else {
             M.toast({html: "Select some word"});
       }

@@ -1,6 +1,42 @@
-function scrollToTop() {
+//signes text by milestones
+/*
+let resultText = document.getElementById("resultText");
+let show = document.getElementById("show");
+let text = resultText.innerText;
+
+function setMilestones(text, frequency) {
+    let stone = 0;
+    let stonedText = `<span id='${stone}'></span>`;
+    if (frequency < text.length) {
+        let firstIndex = 0;
+        let secondIndex = 0;
+        while ((firstIndex + frequency) < text.length) {
+            stone++;
+            secondIndex = text.indexOf(" ", firstIndex + frequency);
+            stonedText += text.slice(firstIndex, secondIndex) + `<span id='${stone}'></span>`;
+            firstIndex = secondIndex;
+        }
+        stonedText += text.slice(firstIndex);
+        return stonedText;
+    } else {
+        return text;
+    }
+}
+
+resultText.innerHTML = setMilestones(text, 100);
+
+show.onclick = () => {
+    document.getElementById(`10`).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+};
+*/
+
+// old pagination
+/* function scrollToTop() {
     if (window.pageYOffset > 0) {
-        window.scrollBy(0, -5);
+        window.scrollBy(0, -10);
         setTimeout(scrollToTop, 1);
     }
 }
@@ -75,3 +111,5 @@ if(pages.length == 1) {
         textContainer.innerText = pages[currentPage - 1];
     }
 }
+
+ */

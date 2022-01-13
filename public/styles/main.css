@@ -10,8 +10,9 @@ main {
 
 .readerContainer {
   display: flex;
-  min-height: 80vh;
   flex-direction: column;
+  height: 83vh;
+  overflow-y: scroll;
 }
 
 .reader {

@@ -41,13 +41,13 @@
         <% let transliteratedText = data.transliteratedText; %>
         <div <% if(data.direction === "rtl") { %>dir="rtl" <% } %>class="reader" id="resultText"><%= transliteratedText %></div>
 
-        <div id="pagination" class="row pagination">
+        <!--<div id="pagination" class="row pagination">
             <div class="col m3 s2"><a id="pageBack"><i class="material-icons orange white-text">chevron_left</i></a></div>
             <div class="col m6 s3"><input id="pageNumber" name="pageNumber" type="number"><label for="pageNumber"></label>
             </div>
             <div class="col m3 s2"><a id="pageForward"><i class="material-icons orange white-text">chevron_right</i></a>
             </div>
-        </div>
+        </div>-->
     </div>
     <div id="show" class="fixed-action-btn">
         <button class="btn-floating btn-large orange tooltipped" data-position="top" data-tooltip="Shows original of selection">
@@ -72,7 +72,6 @@
 <script src="/scripts/fonts.js"></script>
 <script src="/scripts/nightMode.js"></script>
 <script src="/scripts/fontSize.js"></script>
-<script src="/scripts/pagination.js"></script>
 <script src="/scripts/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
         integrity="sha512-m2PhLxj2N91eYrIGU2cmIu2d0SkaE4A14bCjVb9zykvp6WtsdriFCiXQ/8Hdj0kssUB/Nz0dMBcoLsJkSCto0Q=="

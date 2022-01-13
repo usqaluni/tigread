@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let navbar = document.getElementById('navbar');
     let footer = document.getElementById('footer');
 
-    let pageBack = document.getElementById('pageBack');
-    let pageNumber = document.getElementById('pageNumber');
-    let pageForward = document.getElementById('pageForward');
+    let showButton = document.getElementById('showButton');
 
     let isNight = false;
 
@@ -21,9 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.classList.add("orange");
             footer.classList.remove("black");
             footer.classList.add("orange");
-            pageBack.children[0].classList.add("orange");
-            pageForward.children[0].classList.add("orange");
-            pageNumber.style.color = "black";
+            showButton.classList.remove("black");
+            showButton.classList.add("orange");
         } else {
             isNight = true;
             text.style.color = "white";
@@ -34,9 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.classList.add("black");
             footer.classList.remove("orange");
             footer.classList.add("black");
-            pageBack.children[0].classList.remove("orange");
-            pageForward.children[0].classList.remove("orange");
-            pageNumber.style.color = "white";
+            showButton.classList.remove("orange");
+            showButton.classList.add("black");
         }
     }
 });
